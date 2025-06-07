@@ -64,6 +64,35 @@ export default tseslint.config({
 
 # ########################### NOTE ###########################
 - Create a React project with Vite using Typescript: npm create vite@latest my-react-app -- --template react-ts
-- Set up essential dependencies: npm install
+  Vite: A build tool used to develop web app
+  Node: A JavaScript runtime environment
+  npm (Node Package Manager): A package manager for Node.js
+  React: A JavaScript library developed by Facebook
+
+- Install essential dependencies: npm install
 - Run on dev environment: npm run dev
+- Install Ant Design: npm install antd
+- Install Emotion: npm install @emotion/react @emotion/styled
+- Install React-JSS: npm install react-jss
+- Install React-i18next: npm install react-i18next i18next
+
+- Fetch API, Axios and React Query
+  Fetch API:
+  + Available in the browser without additional installation
+  + Easy to use
+  + No automatic JSON conversion support 
+  + No state management, caching or retry
+  + Requires manual error handling and advanced features
+
+  Axios:
+  + Provides many useful features such as automatic JSON data conversion, timeout configuration and support for canceling requests
+  + Requires additional installation, not available in browsers
+  + Can be larger in size than fetch
+
+  React Query:
+  + Manage state and caching for data from the server automatically
+  + Supports easy fetching, caching, updating, and syncing of data to the server
+  + Provides features like pagination, lazy loading, and retry requests
+  + Requires additional setup
+  + Can be more complex for simple requests than Fetch or Axios
 
