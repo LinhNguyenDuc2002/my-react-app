@@ -52,7 +52,7 @@ export default tseslint.config({
   },
 })
 ```
-# ########################### GIT ############################
+# ########## GIT ##########
 - git init
 - git remote add origin https://github.com/LinhNguyenDuc2002/my-react-app.git
 - git status
@@ -62,7 +62,7 @@ export default tseslint.config({
 - git branch
 - git push -u origin main
 
-# ########################### NOTE ###########################
+# ########## NOTE ##########
 - Create a React project with Vite using Typescript: npm create vite@latest my-react-app -- --template react-ts
   Vite: A build tool used to develop web app
   Node: A JavaScript runtime environment
