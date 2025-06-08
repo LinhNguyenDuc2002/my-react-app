@@ -96,3 +96,12 @@ export default tseslint.config({
   + Requires additional setup
   + Can be more complex for simple requests than Fetch or Axios
 
+- Install React Query: npm install @tanstack/react-query
+
+- Context
+  Đặt vấn đề: 
+  + Data trong React app thường truyền đến component thông qua prop (data được truyền từ component cha đến component con)
+  + Tuy nhiên, có thể truyền data trong toàn bộ app mà không phải truyền prop qua từng tầng component khi sử dụng React Context
+  + Nếu không có React Context, sẽ sử dụng kỹ thuật là “prop drilling” (phải truyền data xuống các component mặc dù một số component không cần data đó)
+- Provider
+  Provider là một component mà được tạo ra từ context. Nó sử dụng để xác định giá trị dữ liệu mà bạn muốn chia sẻ với các component con

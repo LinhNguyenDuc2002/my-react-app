@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
 import { ConfigProvider } from 'antd';
 import { LightTheme, DarkTheme } from './theme';
@@ -34,7 +34,7 @@ export const Provider = ({ children }: { children: ReactNode }) => {
     );
 };
 
-export const useTheme = () => {
+export const useAppContext = () => {
     const context = useContext(AppContext);
 
     if (!context) {
