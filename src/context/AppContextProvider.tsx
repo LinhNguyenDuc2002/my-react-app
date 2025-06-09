@@ -6,6 +6,8 @@ import { AppContext } from './AppContext';
 export const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [value, setValue] = useState<string>('Hello, World!');
 
+    
+
     return (
         <AppContext.Provider value={{ value, setValue }}>
         {children}
