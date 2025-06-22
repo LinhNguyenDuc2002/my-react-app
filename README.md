@@ -130,3 +130,6 @@ nguyên các nguyên tắc thiết kế của React.
 - Function Component: Nên sử dụng cho hầu hết các trường hợp vì tính đơn giản và khả năng sử dụng Hooks.
 - Class Component: Có thể sử dụng trong mã nguồn cũ hoặc khi quản lý state phức tạp.
 => Với sự phát triển của React, component dạng hàm đã trở thành tiêu chuẩn và được khuyến nghị cho các dự án mới
+
+- Install json-bigint-string: npm install json-bigint
+  Xử lý các giá trị số lớn trong JSON, đặc biệt là khi các số này vượt quá giới hạn an toàn của JavaScript

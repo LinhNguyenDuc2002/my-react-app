@@ -6,15 +6,25 @@ export const LightTheme = {
         colorError: '#ff4d4f',
         borderRadius: 4,
     },
+
     components: {
+        Header: {
+            headerBg: '#007bff'
+        },
+
         Button: {
             colorPrimary: '#ff4d4f',
             algorithm: true,
         },
+
         Input: {
             colorPrimary: '#eb2f96',
             algorithm: true,
-        }
+        },
+
+        Typography: {
+
+        },
     },
 };
 
