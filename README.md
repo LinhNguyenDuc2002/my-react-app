@@ -96,3 +96,40 @@ export default tseslint.config({
   + Requires additional setup
   + Can be more complex for simple requests than Fetch or Axios
 
+- Install React Query: npm install @tanstack/react-query
+
+- Context
+  Đặt vấn đề: 
+  + Data trong React app thường truyền đến component thông qua prop (data được truyền từ component cha đến component con)
+  + Tuy nhiên, có thể truyền data trong toàn bộ app mà không phải truyền prop qua từng tầng component khi sử dụng React Context
+  + Nếu không có React Context, sẽ sử dụng kỹ thuật là “prop drilling” (phải truyền data xuống các component mặc dù một số component không cần data đó)
+- Provider
+  Provider là một component mà được tạo ra từ context. Nó sử dụng để xác định giá trị dữ liệu mà bạn muốn chia sẻ với các component con
+
+- useState: Cho phép khai báo local state trong Function Component cách mà trước để chỉ dùng cho Class Component
+
+- Life cycle component
+  1. componentDidMount: Chạy một lần ngay sau khi component được hiển thị lần đầu tiên, tức là ngay sau khi component được thêm vào DOM
+  2. componentDidUpdate: Chạy mỗi khi component cập nhật, tức là bất cứ khi nào props hoặc state thay đổi. Nó hữu ích khi cần phản ứng với những thay đổi trong props hoặc state và thực hiện một số hành động sau khi hiển thị lại
+  3. componentWillUnmount: Chạy ngay trước khi component bị xóa khỏi DOM. Điều cần thiết là dọn dẹp tài nguyên để tránh rò rỉ bộ nhớ. Chạy ngay trước khi component bị unmount và bị xóa khỏi DOM
+
+- UseEffect: Là một hook của react cho phép chạy bất kỳ tác dụng phụ hoặc phản ứng nào sau khi component hiển thị, hiển thị lại hoặc trước khi unmount (render sẽ xảy ra trước khi useEffect được chạy)
+  + Không có phần tử phụ thuộc: Chạy sau mỗi lần render.
+  + Mảng rỗng []: Chỉ chạy một lần, giống như componentDidMount().
+  + Phần tử phụ thuộc cụ thể: Chỉ chạy khi state hoặc prop đó thay đổi
+
+- React thực hiện render component ngay khi nó được gọi. Điều này có nghĩa là khi tạo một component, React sẽ bắt đầu quá trình render ngay lập tức. Các hook như useEffect được thiết kế để thực hiện tác vụ phụ sau khi component đã render. Điều này cho phép React quản lý vòng đời của component và đảm bảo rằng mọi thứ được cập nhật một cách nhất quán
+=> Mặc dù không thể trì hoãn render hoàn toàn, nhưng có thể kiểm soát nội dung hiển thị trong quá trình tải dữ liệu. Điều này giúp cải thiện trải nghiệm người dùng mà vẫn giữ 
+nguyên các nguyên tắc thiết kế của React.
+
+- Interface, class và type trong Typescript
+  Interface định nghĩa một cấu trúc cho các đối tượng mà không cần triển khai chi tiết
+  Class là một cấu trúc dùng để tạo ra đối tượng và có thể chứa các phương thức và thuộc tính
+  Type là một cách linh hoạt hơn để định nghĩa kiểu dữ liệu, có thể đại diện cho một kiểu cơ bản, một đối tượng, một union type, hoặc một tuple và Không hỗ trợ kế thừa
+
+- Function Component: Nên sử dụng cho hầu hết các trường hợp vì tính đơn giản và khả năng sử dụng Hooks.
+- Class Component: Có thể sử dụng trong mã nguồn cũ hoặc khi quản lý state phức tạp.
+=> Với sự phát triển của React, component dạng hàm đã trở thành tiêu chuẩn và được khuyến nghị cho các dự án mới
+
+- Install json-bigint-string: npm install json-bigint
+  Xử lý các giá trị số lớn trong JSON, đặc biệt là khi các số này vượt quá giới hạn an toàn của JavaScript
