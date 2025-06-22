@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import { AppContext } from './AppContext';
-import handleResponse from '../utils/handleError';
+import handleResponse from '../utils/handleResponse';
 
 // destructuring, allow to get children from props directly
 export const DefaultAppContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
