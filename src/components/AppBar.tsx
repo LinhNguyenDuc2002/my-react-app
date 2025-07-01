@@ -1,8 +1,12 @@
 import React from 'react';
-import { Image, Layout, Menu, Typography } from 'antd';
-import { HomeOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
+import { Avatar, Image, Layout, Menu, Space, Typography } from 'antd';
+import { HomeOutlined, UserOutlined, SettingOutlined, ShoppingCartOutlined, BellOutlined, MessageOutlined } from '@ant-design/icons';
 import styled from '@emotion/styled';
 import { createUseStyles } from 'react-jss';
+import logoUrl from '../assets/react.svg';
+import { SearchBox } from './SearchBox';
+import { Link } from './Link';
+import { useTranslation } from 'react-i18next';
 
 const { Title } = Typography;
 
@@ -16,32 +20,52 @@ const useStyles = createUseStyles({
     container: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
-    }
+        justifyContent: 'space-between',
+        width: '75%'
+    },
+
+    title: {
+        marginBottom: '1.5rem !important'
+    },
+
+    icon_container: {
+        fontSize: '20px',
+        color: 'gray',
+        cursor: 'pointer',
+        margin: '0px 20px',
+        marginTop: '30px'
+    },
 });
 
 const AppBar: React.FC = () => {
     const classes = useStyles();
+    const { t } = useTranslation();
 
     return (
         <Header>
-            <div className={classes.container}>
-                <Image src="D:\my-react-app\src\assets\react.svg" />
+            <Space style={{ width: '10%', textAlign: 'start' }} wrap size={10}>
+                <Image src={logoUrl} />
 
-                <Title level={1}>Blue shop</Title>
+                <Title className={classes.title} level={4}>Blue shop</Title>
+            </Space>
+
+            <div className={classes.container}>
+                <div>
+                    <Link label={t('appbar_link.home')}></Link>
+                    <Link label={t('appbar_link.category')}></Link>
+                    <Link label={t('appbar_link.about')}></Link>
+                </div>
+
+                <div>
+                    <ShoppingCartOutlined className={classes.icon_container} />
+                    <BellOutlined className={classes.icon_container} />
+                    <MessageOutlined className={classes.icon_container} />
+                </div>
             </div>
 
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-                <Menu.Item key="1" icon={<HomeOutlined />}>
-                Home
-                </Menu.Item>
-                <Menu.Item key="2" icon={<UserOutlined />}>
-                Profile
-                </Menu.Item>
-                <Menu.Item key="3" icon={<SettingOutlined />}>
-                Settings
-                </Menu.Item>
-            </Menu>
+            <div style={{ width: '10%', textAlign: 'end' }}>
+                <Avatar icon={<UserOutlined />} />
+            </div>
         </Header>
     );
 };

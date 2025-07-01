@@ -15,7 +15,7 @@ i18n
                 translation: vi
             },
         },
-        lng: "vi", // Ngôn ngữ mặc định
+        lng: "en", // Ngôn ngữ mặc định
         fallbackLng: "en", // Ngôn ngữ dự phòng
         interpolation: {
             escapeValue: false, // Không cần thoát ký tự
