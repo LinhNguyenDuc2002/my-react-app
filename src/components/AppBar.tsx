@@ -43,7 +43,7 @@ const AppBar: React.FC = () => {
 
     return (
         <Header>
-            <Space style={{ width: '10%', textAlign: 'start' }} wrap size={10}>
+            <Space style={{ textAlign: 'start' }} wrap size={10}>
                 <Image src={logoUrl} />
 
                 <Title className={classes.title} level={4}>Blue shop</Title>
@@ -63,7 +63,7 @@ const AppBar: React.FC = () => {
                 </div>
             </div>
 
-            <div style={{ width: '10%', textAlign: 'end' }}>
+            <div style={{ textAlign: 'end' }}>
                 <Avatar icon={<UserOutlined />} />
             </div>
         </Header>

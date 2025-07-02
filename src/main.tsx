@@ -5,6 +5,7 @@ import App from './App.tsx'
 import { ThemeProvider } from './context/ThemeProvider.tsx'
 import { DefaultAppContextProvider } from './context/DefaultAppContextProvider.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import './i18n/i18n.tsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
