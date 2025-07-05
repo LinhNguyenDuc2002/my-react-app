@@ -6,6 +6,7 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Footer from "../components/Footer";
 import { createUseStyles } from "react-jss";
+import Signup from "../pages/signup/Signup";
 
 const useStyles = createUseStyles({
     content: {
@@ -22,7 +23,7 @@ export const UserLayout: React.FC = () => {
                 <AppBar></AppBar>
 
                 <Content className={classes.content}>
-                    <Login></Login>
+                    <Signup />
                 </Content>
 
                 <Footer></Footer>

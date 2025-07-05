@@ -15,6 +15,10 @@ export const LightTheme = {
             bodyBg: '#f5f5f5'
         },
 
+        Form: {
+            itemMarginBottom: 30,
+        },
+
         Button: {
             colorPrimary: '#03A9F4',
             algorithm: true,

@@ -5,7 +5,7 @@ import LoginImage from '../../assets/draw1.webp';
 import { useTranslation } from 'react-i18next';
 import { createUseStyles } from 'react-jss';
 import styled from '@emotion/styled';
-import { GoogleOutlined, FacebookOutlined } from '@ant-design/icons';
+import { GoogleOutlined, FacebookOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from '../../components/Link';
 
 const useStyles = createUseStyles({
@@ -23,7 +23,6 @@ const useStyles = createUseStyles({
     },
 
     login_form: {
-        width: '100%',
         textAlign: 'start'
     },
 
@@ -80,17 +79,17 @@ const Login: React.FC = () => {
                     layout={formLayout}
                     >
                     <Form.Item<FieldType>
-                        label="Username"
+                        // label="Username"
                         name="username"
-                        rules={[{ required: true, message: 'Please input your username!' }]}>
-                        <Input />
+                        rules={[{ required: true, message: 'Please input your username' }]}>
+                        <Input size="large" placeholder="Username" prefix={<UserOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType>
-                        label="Password"
+                        // label="Password"
                         name="password"
-                        rules={[{ required: true, message: 'Please input your password!' }]}>
-                        <Input.Password />
+                        rules={[{ required: true, message: 'Please input your password' }]}>
+                        <Input.Password size="large" placeholder="Password" prefix={<LockOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType> name="remember" valuePropName="checked" style={{ marginBottom: '0px' }}>
@@ -98,10 +97,10 @@ const Login: React.FC = () => {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">{t('button.login')}</Button>
-                        <hr style={{ margin: '5px 0px' }} />
-                        <Button style={{ backgroundColor: 'rgb(221, 75, 57)' }}><GoogleOutlined /> {t('button.sign_in_with_google')}</Button>
-                        <Button style={{ backgroundColor: 'rgb(59, 89, 152)' }}><FacebookOutlined /> {t('button.sign_in_with_facebook')}</Button>
+                        <Button size="large" type='primary' htmlType="submit">{t('button.login')}</Button>
+                        <hr style={{ margin: '10px 0px' }} />
+                        <Button size="large" style={{ backgroundColor: 'rgb(221, 75, 57)' }}><GoogleOutlined /> {t('button.sign_in_with_google')}</Button>
+                        <Button size="large" style={{ backgroundColor: 'rgb(59, 89, 152)' }}><FacebookOutlined /> {t('button.sign_in_with_facebook')}</Button>
                         <div className={classes.register}>
                             <Link label='Đăng ký'></Link>
                         </div>
