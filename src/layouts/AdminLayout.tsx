@@ -15,7 +15,7 @@ const useStyles = createUseStyles({
     }
 })
 
-export const UserLayout: React.FC = () => {
+export const AdminLayout: React.FC = () => {
     const classes = useStyles();
 
     return(

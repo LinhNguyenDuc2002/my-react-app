@@ -1,16 +1,17 @@
 import { Button as AntButton } from "antd";
 import type React from "react";
 import styled from '@emotion/styled';
+import type { SizeType } from "antd/lib/config-provider/SizeContext";
 
 interface Data {
-    label: string
+    label: string,
+    size?: SizeType
 }
 
 const Button = styled(AntButton)`
     background-color: transparent;
     border: 0px;
     box-shadow: none;
-    font-size: 16px;
     color: gray;
     margin: 0px 10px;
 
@@ -19,8 +20,8 @@ const Button = styled(AntButton)`
     }
 `;
 
-export const Link: React.FC<Data> = ({ label }) => {
+export const Link: React.FC<Data> = ({ label, size, ...props }) => {
     return (
-        <Button>{label}</Button>
+        <Button size={size} {...props}>{label}</Button>
     )
 }

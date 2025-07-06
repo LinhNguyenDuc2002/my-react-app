@@ -16,7 +16,7 @@ export const LightTheme = {
         },
 
         Form: {
-            itemMarginBottom: 30,
+            itemMarginBottom: 32,
         },
 
         Button: {

@@ -82,14 +82,14 @@ const Login: React.FC = () => {
                         // label="Username"
                         name="username"
                         rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input size="large" placeholder="Username" prefix={<UserOutlined />} />
+                        <Input placeholder="Username" prefix={<UserOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType>
                         // label="Password"
                         name="password"
                         rules={[{ required: true, message: 'Please input your password' }]}>
-                        <Input.Password size="large" placeholder="Password" prefix={<LockOutlined />} />
+                        <Input.Password placeholder="Password" prefix={<LockOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType> name="remember" valuePropName="checked" style={{ marginBottom: '0px' }}>
@@ -98,11 +98,11 @@ const Login: React.FC = () => {
 
                     <Form.Item>
                         <Button size="large" type='primary' htmlType="submit">{t('button.login')}</Button>
-                        <hr style={{ margin: '10px 0px' }} />
+                        <hr style={{ margin: '20px 0px' }} />
                         <Button size="large" style={{ backgroundColor: 'rgb(221, 75, 57)' }}><GoogleOutlined /> {t('button.sign_in_with_google')}</Button>
                         <Button size="large" style={{ backgroundColor: 'rgb(59, 89, 152)' }}><FacebookOutlined /> {t('button.sign_in_with_facebook')}</Button>
                         <div className={classes.register}>
-                            <Link label='Đăng ký'></Link>
+                            <Link size='small' label='Signup'></Link>
                         </div>
                     </Form.Item>
                 </Form>

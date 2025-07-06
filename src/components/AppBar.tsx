@@ -1,10 +1,9 @@
 import React from 'react';
-import { Avatar, Image, Layout, Menu, Space, Typography } from 'antd';
-import { HomeOutlined, UserOutlined, SettingOutlined, ShoppingCartOutlined, BellOutlined, MessageOutlined } from '@ant-design/icons';
+import { Avatar, Dropdown, Image, Layout, Space, Typography, type MenuProps } from 'antd';
+import { UserOutlined, ShoppingCartOutlined, BellOutlined, MessageOutlined, OrderedListOutlined, QuestionCircleOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
 import styled from '@emotion/styled';
 import { createUseStyles } from 'react-jss';
 import logoUrl from '../assets/react.svg';
-import { SearchBox } from './SearchBox';
 import { Link } from './Link';
 import { useTranslation } from 'react-i18next';
 
@@ -37,6 +36,47 @@ const useStyles = createUseStyles({
     },
 });
 
+const items: MenuProps['items'] = [
+    {
+        key: '1',
+        label: 'My Account',
+        disabled: true,
+    },
+    {
+        type: 'divider',
+    },
+    {
+        key: '2',
+        label: 'Tài khoản của tôi',
+        icon: <UserOutlined />,
+        extra: '⌘P',
+    },
+    {
+        key: '3',
+        label: 'Xem đơn hàng',
+        icon: <OrderedListOutlined />,
+        extra: '⌘B',
+    },
+     {
+        key: '4',
+        label: 'Cài đặt',
+        icon: <SettingOutlined />,
+        extra: '⌘B',
+    },
+    {
+        key: '5',
+        label: 'Trợ giúp',
+        icon: <QuestionCircleOutlined />,
+        extra: '⌘S',
+    },
+    {
+        key: '6',
+        label: 'Đăng xuất',
+        icon: <LogoutOutlined />,
+        extra: '⌘S',
+    },
+];
+
 const AppBar: React.FC = () => {
     const classes = useStyles();
     const { t } = useTranslation();
@@ -64,7 +104,11 @@ const AppBar: React.FC = () => {
             </div>
 
             <div style={{ textAlign: 'end' }}>
-                <Avatar icon={<UserOutlined />} />
+                <Dropdown menu={{ items }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                        <Avatar icon={<UserOutlined />} />
+                    </a>
+                </Dropdown>
             </div>
         </Header>
     );

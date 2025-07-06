@@ -83,41 +83,41 @@ const Signup: React.FC = () => {
                         // label="Username"
                         name="username"
                         rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input size="large" placeholder="Username" prefix={<UserOutlined />} />
+                        <Input placeholder="Username" prefix={<UserOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType>
                         // label="Username"
                         name="username"
                         rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input size="large" placeholder="Username" prefix={<MailOutlined />} />
+                        <Input placeholder="Email" prefix={<MailOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType>
                         // label="Username"
                         name="username"
                         rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input size="large" placeholder="Username" prefix={<PhoneOutlined />} />
+                        <Input placeholder="Phone number" prefix={<PhoneOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType>
                         // label="Username"
                         name="username"
                         rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input size="large" placeholder="Username" prefix={<LockOutlined />} />
+                        <Input.Password placeholder="Password" prefix={<LockOutlined />} />
                     </Form.Item>
 
                     <Form.Item<FieldType>
                         // label="Username"
                         name="username"
                         rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input size="large" placeholder="Username" prefix={<LockOutlined />} />
+                        <Input.Password placeholder="Repeat your password" prefix={<LockOutlined />} />
                     </Form.Item>
 
                     <Form.Item>
-                        <Button size="large" type="primary" htmlType="submit">{t('button.login')}</Button>
+                        <Button size="large" type="primary" htmlType="submit">{t('button.signup')}</Button>
                         <div className={classes.register}>
-                            Have already an account? <Link label='Login here'></Link>
+                            Have already an account?<Link size='small' label='Login here'></Link>
                         </div>
                     </Form.Item>
                 </Form>
