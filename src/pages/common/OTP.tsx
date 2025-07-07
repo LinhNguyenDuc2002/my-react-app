@@ -1,4 +1,4 @@
-import { Button, Card, Input, Typography, type GetProps } from "antd";
+import { Button, Card, Input, type GetProps } from "antd";
 import type React from "react";
 import { Paragraph } from "../../components/Paragraph";
 import { createUseStyles } from "react-jss";

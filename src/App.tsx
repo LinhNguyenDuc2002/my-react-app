@@ -7,10 +7,11 @@ import AppBar from './components/AppBar'
 import { Content } from 'antd/lib/layout/layout'
 import Home from './pages/home/Home'
 import { UserLayout } from './layouts/UserLayout'
+import AdminLayout from './layouts/AdminLayout'
 
 function App() {
   return (
-    <UserLayout></UserLayout>
+    <AdminLayout></AdminLayout>
   )
 }
 

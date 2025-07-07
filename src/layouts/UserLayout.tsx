@@ -19,16 +19,14 @@ export const UserLayout: React.FC = () => {
     const classes = useStyles();
 
     return(
-        <>
-            <Layout>
-                <AppBar></AppBar>
+        <Layout>
+            <AppBar></AppBar>
 
-                <Content className={classes.content}>
-                    <OTP />
-                </Content>
+            <Content className={classes.content}>
+                <OTP />
+            </Content>
 
-                <Footer></Footer>
-            </Layout>
-        </>
+            <Footer></Footer>
+        </Layout>
     );
 }

@@ -1,13 +1,12 @@
 import React from 'react';
-import { Avatar, Dropdown, Image, Layout, Space, Typography, type MenuProps } from 'antd';
+import { Avatar, Dropdown, Image, Layout, Space, Typography } from 'antd';
+import type { MenuProps } from 'antd';
 import { UserOutlined, ShoppingCartOutlined, BellOutlined, MessageOutlined, OrderedListOutlined, QuestionCircleOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
 import styled from '@emotion/styled';
 import { createUseStyles } from 'react-jss';
 import logoUrl from '../assets/react.svg';
 import { Link } from './Link';
 import { useTranslation } from 'react-i18next';
-
-const { Title } = Typography;
 
 const Header = styled(Layout.Header)`
     display: flex;
@@ -35,6 +34,8 @@ const useStyles = createUseStyles({
         marginTop: '30px'
     },
 });
+
+const { Title } = Typography;
 
 const items: MenuProps['items'] = [
     {
@@ -97,19 +98,30 @@ const AppBar: React.FC = () => {
                 </div>
 
                 <div>
-                    <ShoppingCartOutlined className={classes.icon_container} />
-                    <BellOutlined className={classes.icon_container} />
-                    <MessageOutlined className={classes.icon_container} />
+                    <Dropdown className={classes.icon_container} >
+                        <a onClick={(e) => e.preventDefault()}>
+                            <ShoppingCartOutlined />
+                        </a>
+                    </Dropdown>
+
+                    <Dropdown menu={{ items }} className={classes.icon_container} >
+                        <a onClick={(e) => e.preventDefault()}>
+                            <BellOutlined />
+                        </a>
+                    </Dropdown>
+                    <Dropdown menu={{ items }} className={classes.icon_container} >
+                        <a onClick={(e) => e.preventDefault()}>
+                            <MessageOutlined />
+                        </a>
+                    </Dropdown>
                 </div>
             </div>
 
-            <div style={{ textAlign: 'end' }}>
-                <Dropdown menu={{ items }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                        <Avatar icon={<UserOutlined />} />
-                    </a>
-                </Dropdown>
-            </div>
+            <Dropdown menu={{ items }}>
+                <a onClick={(e) => e.preventDefault()}>
+                    <Avatar icon={<UserOutlined />} />
+                </a>
+            </Dropdown>
         </Header>
     );
 };

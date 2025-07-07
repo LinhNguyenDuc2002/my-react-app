@@ -1,34 +1,77 @@
-import { Layout } from "antd";
-import type React from "react";
-import AppBar from "../components/AppBar";
-import { Content } from "antd/lib/layout/layout";
-import Home from "../pages/home/Home";
-import Login from "../pages/login/Login";
-import Footer from "../components/Footer";
-import { createUseStyles } from "react-jss";
-import Signup from "../pages/signup/Signup";
-import OTP from "../pages/common/OTP";
+import React, { useState } from 'react';
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
+import { Button, Layout, Menu, theme } from 'antd';
+import AppBar from '../components/AppBar';
 
-const useStyles = createUseStyles({
-    content: {
-        margin: '50px'
-    }
-})
+const { Header, Sider, Content } = Layout;
 
-export const AdminLayout: React.FC = () => {
-    const classes = useStyles();
+const items = [
+    {
+        key: '1',
+        icon: <UserOutlined />,
+        label: 'nav 1',
+    },
+    {
+        key: '2',
+        icon: <VideoCameraOutlined />,
+        label: 'nav 2',
+    },
+    {
+        key: '3',
+        icon: <UploadOutlined />,
+        label: 'nav 3',
+    },
+]
 
-    return(
-        <>
+const AdminLayout: React.FC = () => {
+    const [collapsed, setCollapsed] = useState(false);
+    const {
+        token: { colorBgContainer, borderRadiusLG },
+    } = theme.useToken();
+
+    return (
+        <Layout>
+            <AppBar></AppBar>
+
             <Layout>
-                <AppBar></AppBar>
+                <Sider trigger={null} collapsible collapsed={collapsed}>
+                    <div className="demo-logo-vertical" />
+                    <Menu theme="light" mode="inline" defaultSelectedKeys={['1']} items={items} />
+                </Sider>
 
-                <Content className={classes.content}>
-                    <OTP />
-                </Content>
+                <Layout>
+                    {/* <Header style={{ padding: 0, background: colorBgContainer }}>
+                        <Button
+                            type="text"
+                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                            onClick={() => setCollapsed(!collapsed)}
+                            style={{
+                            fontSize: '16px',
+                            width: 64,
+                            height: 64,
+                            }}
+                        />
+                    </Header> */}
 
-                <Footer></Footer>
+                    <Content
+                        style={{
+                            margin: '24px 16px',
+                            padding: 24,
+                            minHeight: 280,
+                            background: colorBgContainer,
+                            borderRadius: borderRadiusLG,
+                        }}>
+                    </Content>
+                </Layout>
             </Layout>
-        </>
+        </Layout>
     );
-}
+};
+
+export default AdminLayout;
