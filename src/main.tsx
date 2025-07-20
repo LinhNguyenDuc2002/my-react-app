@@ -5,7 +5,7 @@ import App from './App.tsx'
 import { ThemeProvider } from './context/ThemeProvider.tsx'
 import { DefaultAppContextProvider } from './context/DefaultAppContextProvider.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import './i18n/i18n.tsx';
+import './i18n/i18n.ts';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,7 +23,6 @@ createRoot(document.getElementById('root')!).render(
           <QueryClientProvider client={queryClient}>
             {/* <CssBaseline />
             <ReactQueryDevtools /> */}
-
             <App />
           </QueryClientProvider>
         </DefaultAppContextProvider>
