@@ -61,6 +61,7 @@ export default tseslint.config({
 - git branch -M main
 - git branch
 - git push -u origin main
+- git log --oneline --graph --decorate --all
 
 # ########## NOTE ##########
 - Create a React project with Vite using Typescript: npm create vite@latest my-react-app -- --template react-ts
