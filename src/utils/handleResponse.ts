@@ -1,38 +1,27 @@
-import JSONbig from "json-bigint"; // npm i --save-dev @types/json-bigint
+import type { AxiosResponse } from "axios";
+import { ErrorResponse } from "../types/common";
 
-class ResponseError {
-    statusText: string;
-    status: number;
-    body: string;
+// export default function handleResponse(response: AxiosResponse): Promise<any> {
+//     return Promise.all([response.data, response.status, response.statusText])
+//     .then(([data, status, statusText]) => {
+//         if (status < 200 || status >= 300) {
+//             throw new ErrorResponse(statusText, status, data)
+//         }
 
-    constructor(statusText: string, status: number, body: string) {
-        this.statusText = statusText;
-        this.status = status;
-        this.body = body;
+//         // 200 - 299
+//         return [data];
+//     })
+//     .then(([data]) => {
+//         return data;
+//     });
+// }
+
+export default function handleResponse(response: AxiosResponse): Promise<any> {
+    const [data, status, statusText] = [response.data, response.status, response.statusText];
+    
+    if (status < 200 || status >= 300) {
+        throw new ErrorResponse(statusText, status, data);
     }
-}
-
-export default function handleResponse(res: Response): Promise<any> {
-    return Promise.all([res, res.text()])
-    .then(([response, body]) => {
-        if (!response.ok) {
-            const responseError = new ResponseError(response.statusText, response.status, body);
-            throw responseError;
-        }
-
-        return [body];
-    })
-    .then(([text]) => {
-        if (!text || text.length === 0) {
-            return null;
-        } 
-        else {
-            try {
-                return JSONbig.parse(text);
-            } catch (e) {
-                // Fallback if response is not JSON
-                return text;
-            }
-        }
-    });
+    // 200 - 299
+    return data;
 }

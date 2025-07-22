@@ -1,9 +1,7 @@
 import type React from "react";
 import { Tabs } from "../../components/Tabs";
 import type { TabsProps } from "antd";
-import Test from "./test";
 import { useNavigate } from "react-router-dom";
-import Content from "./content";
 
 const Home: React.FC = () => {
     const navigate = useNavigate();
@@ -17,7 +15,7 @@ const Home: React.FC = () => {
         {
             key: '180020010001215413',
             label: 'Tab 2',
-            children: <Test />,
+            // children: <Test />,
         },
         {
             key: '3',
@@ -29,8 +27,8 @@ const Home: React.FC = () => {
     return (
         <>
             <div style={{ height: '500px'}}>
-                <Tabs items={items} onChange={(key: string) => navigate(`/admin/${key}`)} destroyInactiveTabPane={true}></Tabs>
-                {/* destroyInactiveTabPane={true}: có giữ các tab không hoạt động hay không */}
+                <Tabs items={items} onChange={(key: string) => navigate(`/admin/${key}`)} destroyOnHidden={true}></Tabs>
+                {/* destroyOnHidden={true}: hủy các tab đang không hoạt động */}
             </div>
         </>
     )

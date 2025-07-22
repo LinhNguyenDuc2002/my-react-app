@@ -6,7 +6,6 @@ export const LightTheme = {
         colorError: '#ff4d4f',
         borderRadius: 4,
         fontFamilyCode: 'Roboto',
-        fontSize: 15
     },
 
     components: {

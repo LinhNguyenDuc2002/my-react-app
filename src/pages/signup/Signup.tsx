@@ -7,6 +7,8 @@ import { createUseStyles } from 'react-jss';
 import styled from '@emotion/styled';
 import { UserOutlined, MailOutlined, PhoneOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from '../../components/Link';
+import { useNavigate } from 'react-router-dom';
+import ROUTE_CONSTANTS from '../../routes/routeConstant';
 
 const useStyles = createUseStyles({
     container: {
@@ -29,7 +31,7 @@ const useStyles = createUseStyles({
 
     register: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
     }
 })
 
@@ -50,6 +52,7 @@ const Signup: React.FC = () => {
     const classes = useStyles();
     const { t } = useTranslation();
 
+    const navigate = useNavigate();
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState<LayoutType>('vertical');
 
@@ -116,8 +119,9 @@ const Signup: React.FC = () => {
 
                     <Form.Item>
                         <Button size="large" type="primary" htmlType="submit">{t('button.signup')}</Button>
+
                         <div className={classes.register}>
-                            Have already an account?<Link size='small' label='Login here'></Link>
+                            Have already an account? <Link size='small' onClick={() => navigate(ROUTE_CONSTANTS.login)}>Login here</Link>
                         </div>
                     </Form.Item>
                 </Form>

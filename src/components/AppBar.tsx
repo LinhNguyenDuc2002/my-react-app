@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Avatar, Dropdown, Image, Layout, Space, Typography } from 'antd';
 import type { MenuProps } from 'antd';
 import { UserOutlined, ShoppingCartOutlined, BellOutlined, MessageOutlined, OrderedListOutlined, QuestionCircleOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
@@ -7,6 +7,8 @@ import { createUseStyles } from 'react-jss';
 import logoUrl from '../assets/react.svg';
 import { Link } from './Link';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import ROUTE_CONSTANTS from '../routes/routeConstant';
 
 const Header = styled(Layout.Header)`
     display: flex;
@@ -37,50 +39,55 @@ const useStyles = createUseStyles({
 
 const { Title } = Typography;
 
-const items: MenuProps['items'] = [
-    {
-        key: '1',
-        label: 'My Account',
-        disabled: true,
-    },
-    {
-        type: 'divider',
-    },
-    {
-        key: '2',
-        label: 'Tài khoản của tôi',
-        icon: <UserOutlined />,
-        extra: '⌘P',
-    },
-    {
-        key: '3',
-        label: 'Xem đơn hàng',
-        icon: <OrderedListOutlined />,
-        extra: '⌘B',
-    },
-     {
-        key: '4',
-        label: 'Cài đặt',
-        icon: <SettingOutlined />,
-        extra: '⌘B',
-    },
-    {
-        key: '5',
-        label: 'Trợ giúp',
-        icon: <QuestionCircleOutlined />,
-        extra: '⌘S',
-    },
-    {
-        key: '6',
-        label: 'Đăng xuất',
-        icon: <LogoutOutlined />,
-        extra: '⌘S',
-    },
-];
-
 const AppBar: React.FC = () => {
     const classes = useStyles();
     const { t } = useTranslation();
+
+    const navigate = useNavigate();
+
+    const items: MenuProps['items'] = useMemo(() =>
+        [
+            {
+                key: '1',
+                label: 'My Account',
+                disabled: true,
+            },
+            {
+                type: 'divider',
+            },
+            {
+                key: '2',
+                label: t('header_menu.my_account'),
+                icon: <UserOutlined />,
+                extra: '⌘P',
+            },
+            {
+                key: '3',
+                label: t('header_menu.view_orders'),
+                icon: <OrderedListOutlined />,
+                extra: '⌘B',
+            },
+            {
+                key: '4',
+                label: t('header_menu.settings'),
+                icon: <SettingOutlined />,
+                extra: '⌘B',
+            },
+            {
+                key: '5',
+                label: t('header_menu.help'),
+                icon: <QuestionCircleOutlined />,
+                extra: '⌘S',
+            },
+            {
+                key: '6',
+                label: t('header_menu.logout'),
+                icon: <LogoutOutlined />,
+                extra: '⌘S',
+            },
+        ],
+        []
+    );
 
     return (
         <Header>
@@ -92,9 +99,9 @@ const AppBar: React.FC = () => {
 
             <div className={classes.container}>
                 <div>
-                    <Link label={t('appbar_link.home')}></Link>
-                    <Link label={t('appbar_link.category')}></Link>
-                    <Link label={t('appbar_link.about')}></Link>
+                    <Link onClick={() => navigate(ROUTE_CONSTANTS.home)}>{t('appbar_link.home')}</Link>
+                    <Link>{t('appbar_link.category')}</Link>
+                    <Link>{t('appbar_link.about')}</Link>
                 </div>
 
                 <div>
