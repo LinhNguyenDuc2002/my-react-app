@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { FormProps } from 'antd';
-import { Button as AntButton, Checkbox, Form, Image, Input, Typography } from 'antd';
+import { Button as AntButton, Card, Flex, Form, Image, Input, Typography } from 'antd';
 import SignupImage from '../../assets/draw2.webp';
 import { useTranslation } from 'react-i18next';
 import { createUseStyles } from 'react-jss';
@@ -15,24 +15,12 @@ const useStyles = createUseStyles({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: '#ffffff',
-        padding: '20px'
     },
 
-    login_container: {
-        width: '45%',
+    signup_container: {
+        width: '50%',
         padding: '0px 50px'
     },
-
-    login_form: {
-        width: '100%',
-        textAlign: 'start'
-    },
-
-    register: {
-        display: 'flex',
-        justifyContent: 'center',
-    }
 })
 
 const Button = styled(AntButton)`
@@ -69,64 +57,61 @@ const Signup: React.FC = () => {
     };
 
     return (
-        <div className={classes.container}>
-            <Image width={'45%'} src={SignupImage} />
+        <Card>
+            <div className={classes.container}>
+                <Image src={SignupImage} />
 
-            <div className={classes.login_container}>
-                <Title level={4}>SIGNUP</Title>
-                <Form
-                    className={classes.login_form}
-                    initialValues={{ remember: true }}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
-                    autoComplete="off"
-                    layout={formLayout}
-                    >
-                    <Form.Item<FieldType>
-                        // label="Username"
-                        name="username"
-                        rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input placeholder="Username" prefix={<UserOutlined />} />
-                    </Form.Item>
+                <div className={classes.signup_container}>
+                    <Title level={4}>SIGNUP</Title>
 
-                    <Form.Item<FieldType>
-                        // label="Username"
-                        name="username"
-                        rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input placeholder="Email" prefix={<MailOutlined />} />
-                    </Form.Item>
+                    <Form
+                        initialValues={{ remember: true }}
+                        onFinish={onFinish}
+                        onFinishFailed={onFinishFailed}
+                        autoComplete="off"
+                        layout={formLayout}
+                        >
+                        <Form.Item<FieldType>
+                            name="username"
+                            rules={[{ required: true, message: 'Please input your username' }]}>
+                            <Input placeholder="Username" prefix={<UserOutlined />} />
+                        </Form.Item>
 
-                    <Form.Item<FieldType>
-                        // label="Username"
-                        name="username"
-                        rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input placeholder="Phone number" prefix={<PhoneOutlined />} />
-                    </Form.Item>
+                        <Form.Item<FieldType>
+                            name="username"
+                            rules={[{ required: true, message: 'Please input your username' }]}>
+                            <Input placeholder="Email" prefix={<MailOutlined />} />
+                        </Form.Item>
 
-                    <Form.Item<FieldType>
-                        // label="Username"
-                        name="username"
-                        rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input.Password placeholder="Password" prefix={<LockOutlined />} />
-                    </Form.Item>
+                        <Form.Item<FieldType>
+                            name="username"
+                            rules={[{ required: true, message: 'Please input your username' }]}>
+                            <Input placeholder="Phone number" prefix={<PhoneOutlined />} />
+                        </Form.Item>
 
-                    <Form.Item<FieldType>
-                        // label="Username"
-                        name="username"
-                        rules={[{ required: true, message: 'Please input your username' }]}>
-                        <Input.Password placeholder="Repeat your password" prefix={<LockOutlined />} />
-                    </Form.Item>
+                        <Form.Item<FieldType>
+                            name="username"
+                            rules={[{ required: true, message: 'Please input your username' }]}>
+                            <Input.Password placeholder="Password" prefix={<LockOutlined />} />
+                        </Form.Item>
 
-                    <Form.Item>
-                        <Button size="large" type="primary" htmlType="submit">{t('button.signup')}</Button>
+                        <Form.Item<FieldType>
+                            name="username"
+                            rules={[{ required: true, message: 'Please input your username' }]}>
+                            <Input.Password placeholder="Repeat your password" prefix={<LockOutlined />} />
+                        </Form.Item>
 
-                        <div className={classes.register}>
-                            Have already an account? <Link size='small' onClick={() => navigate(ROUTE_CONSTANTS.login)}>Login here</Link>
-                        </div>
-                    </Form.Item>
-                </Form>
+                        <Form.Item>
+                            <Button size="large" type="primary" htmlType="submit">{t('button.signup')}</Button>
+
+                            <div>
+                                Have already an account? <Link size='small' onClick={() => navigate(ROUTE_CONSTANTS.login)}>Login here</Link>
+                            </div>
+                        </Form.Item>
+                    </Form>
+                </div>
             </div>
-        </div>
+        </Card>
     )
 }
 
