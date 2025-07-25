@@ -9,6 +9,7 @@ import { UserOutlined, MailOutlined, PhoneOutlined, LockOutlined } from '@ant-de
 import { Link } from '../../components/Link';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_CONSTANTS from '../../routes/routeConstant';
+import Title from '../../components/Title';
 
 const useStyles = createUseStyles({
     container: {
@@ -28,7 +29,6 @@ const Button = styled(AntButton)`
     margin: 10px 0px;
 `;
 
-const { Title } = Typography;
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 type FieldType = {
     username?: string;
@@ -62,7 +62,7 @@ const Signup: React.FC = () => {
                 <Image src={SignupImage} />
 
                 <div className={classes.signup_container}>
-                    <Title level={4}>SIGNUP</Title>
+                    <Title level={4} textTransform={'uppercase'}>{t('title.signup_form')}</Title>
 
                     <Form
                         initialValues={{ remember: true }}
@@ -105,7 +105,7 @@ const Signup: React.FC = () => {
                             <Button size="large" type="primary" htmlType="submit">{t('button.signup')}</Button>
 
                             <div>
-                                Have already an account? <Link size='small' onClick={() => navigate(ROUTE_CONSTANTS.login)}>Login here</Link>
+                                {t('message.have_an_account')} <Link size='small' onClick={() => navigate(ROUTE_CONSTANTS.login)}>{t('link.login_here')}</Link>
                             </div>
                         </Form.Item>
                     </Form>

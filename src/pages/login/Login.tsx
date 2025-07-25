@@ -12,6 +12,7 @@ import ROUTE_CONSTANTS from '../../routes/routeConstant';
 import type { Credentials, Oauth2Form, Oauth2Response } from '../../types/authentication';
 import { ENV_CLIENT_ID, ENV_CLIENT_SECRET, ENV_GRANT_TYPE } from '../../utils/constants';
 import { useAuthenAction } from '../../data/authService';
+import Title from '../../components/Title';
 
 const useStyles = createUseStyles({
     container: {
@@ -32,7 +33,6 @@ const Button = styled(AntButton)`
     margin: 10px 0px;
 `;
 
-const { Title } = Typography;
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 const Login: React.FC = () => {
@@ -53,7 +53,9 @@ const Login: React.FC = () => {
         }
 
         const response: Oauth2Response = await login(formData);
-        console.log(response);
+
+        sessionStorage.setItem('access_token', response.access_token);
+        sessionStorage.setItem('refresh_token', response.refresh_token);
     };
 
     const onFinishFailed: FormProps<Credentials>['onFinishFailed'] = (errorInfo) => {
@@ -71,7 +73,7 @@ const Login: React.FC = () => {
 
                 <div className={classes.login_container}>
                     <Flex wrap gap="middle" vertical>
-                        <Title level={4}>LOGIN</Title>
+                        <Title level={4} textTransform={'uppercase'}>{t('title.login_form')}</Title>
 
                         <Form
                             initialValues={{ remember: true }}
@@ -94,10 +96,10 @@ const Login: React.FC = () => {
 
                             <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                                 <Form.Item<Credentials> name="remember" valuePropName="checked" style={{ marginBottom: '0px' }}>
-                                    <Checkbox defaultChecked={false}>Remember me</Checkbox>
+                                    <Checkbox defaultChecked={false}>{t('check_box.remember_me')}</Checkbox>
                                 </Form.Item>
 
-                                <Link>Forget password?</Link>
+                                <Link>{t('link.forget_password')}</Link>
                             </div>
 
                             <Form.Item>
@@ -105,7 +107,7 @@ const Login: React.FC = () => {
                                 <hr style={{ margin: '10px 0px' }} />
                                 <Button size="large" style={{ backgroundColor: 'rgb(221, 75, 57)' }}><GoogleOutlined /> {t('button.sign_in_with_google')}</Button>
                                 <Button size="large" style={{ backgroundColor: 'rgb(59, 89, 152)' }}><FacebookOutlined /> {t('button.sign_in_with_facebook')}</Button>
-                                <Link size='small' onClick={() => navigate(ROUTE_CONSTANTS.signup)}>Signup</Link>
+                                <Link size='small' onClick={() => navigate(ROUTE_CONSTANTS.signup)}>{t('button.signup')}</Link>
                             </Form.Item>
                         </Form>
                     </Flex>

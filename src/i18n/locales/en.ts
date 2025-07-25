@@ -5,6 +5,13 @@ export const en = {
         sign_in_with_google: 'Sign in with Google',
         sign_in_with_facebook: 'Sign in with Facebook',
     },
+    check_box: {
+        remember_me: 'Remember me',
+    },
+    link: {
+        forget_password: 'Forget password?',
+        login_here: 'Login here'
+    },
     header_menu: {
         my_account: 'My account',
         view_orders: 'View orders',
@@ -17,6 +24,12 @@ export const en = {
         category: 'Category',
         about: 'About'
     },
-    welcome: "Welcome",
+    title: {
+        login_form: 'Login',
+        signup_form: 'Signup'
+    },
+    message: {
+        have_an_account: 'Have already an account?'
+    }
 }
 
