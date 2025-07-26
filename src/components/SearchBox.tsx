@@ -3,11 +3,11 @@ import type React from "react";
 
 const { Search } = Input;
 
-interface Data {
+interface SearchBoxProps {
     placeholder?: string
 }
 
-export const SearchBox: React.FC<Data> = ({ placeholder }) => {
+export const SearchBox: React.FC<SearchBoxProps> = ({ placeholder }) => {
     return (
         <Search
             placeholder={placeholder}

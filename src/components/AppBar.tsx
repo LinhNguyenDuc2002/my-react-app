@@ -9,6 +9,8 @@ import { Link } from './Link';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import ROUTE_CONSTANTS from '../routes/routeConstant';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../redux/store';
 
 const Header = styled(Layout.Header)`
     display: flex;
@@ -43,6 +45,7 @@ const AppBar: React.FC = () => {
     const classes = useStyles();
     const { t } = useTranslation();
 
+    const user = useSelector((state: RootState) => state.user.user);
     const navigate = useNavigate();
 
     const items: MenuProps['items'] = useMemo(() =>

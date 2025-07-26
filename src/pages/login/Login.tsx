@@ -13,6 +13,9 @@ import type { Credentials, Oauth2Form, Oauth2Response } from '../../types/authen
 import { ENV_CLIENT_ID, ENV_CLIENT_SECRET, ENV_GRANT_TYPE } from '../../utils/constants';
 import { useAuthenAction } from '../../data/authService';
 import Title from '../../components/Title';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/actions/useSlice';
+import { useGetLoggedInUser } from '../../data/userService';
 
 const useStyles = createUseStyles({
     container: {
@@ -39,6 +42,7 @@ const Login: React.FC = () => {
     const classes = useStyles();
     const { t } = useTranslation();
 
+    const dispatch = useDispatch(); // Read data from store and send actions to store
     const navigate = useNavigate();
     const [formLayout, setFormLayout] = useState<LayoutType>('vertical');
     const { mutateAsync: login } = useAuthenAction();
@@ -52,10 +56,14 @@ const Login: React.FC = () => {
             password: values.password,
         }
 
-        const response: Oauth2Response = await login(formData);
+        const authResponse: Oauth2Response = await login(formData);
+        if(authResponse) {
+            sessionStorage.setItem('access_token', authResponse.access_token);
+            sessionStorage.setItem('refresh_token', authResponse.refresh_token);
 
-        sessionStorage.setItem('access_token', response.access_token);
-        sessionStorage.setItem('refresh_token', response.refresh_token);
+            // const response = await getLoggedInUser();
+            // dispatch(setUser())
+        }
     };
 
     const onFinishFailed: FormProps<Credentials>['onFinishFailed'] = (errorInfo) => {

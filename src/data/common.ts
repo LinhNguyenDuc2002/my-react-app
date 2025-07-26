@@ -9,7 +9,7 @@ export const useFetch = <T, > (instance: AxiosInstance, key: string[], url: stri
     })
 };
 
-export const useAction = <T, R, > (method: Method = 'POST', instance: AxiosInstance, url?: string, params?: any): UseMutationResult<R, Error, T> => {
+export const useAction = <R, T = unknown, > (method: Method = 'POST', instance: AxiosInstance, url?: string, params?: any): UseMutationResult<R, Error, T> => {
     return useMutation<R, Error, T>({
         // mutationKey: [...key],
         mutationFn: (data?: T) => instance({ // This function that performs an asynchronous task and returns a promise.

@@ -5,6 +5,7 @@ const defaultAxiosInstance: AxiosInstance = axios.create({
     baseURL: `${ENV_BASE_API}`,
     headers: {
         [HEADER_PARAMS.CONTENT_TYPE]: 'application/json',
+        [HEADER_PARAMS.AUTHORIZATION]: `Bearer ${sessionStorage.getItem('access_token')}`,
     },
 });
 

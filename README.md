@@ -138,3 +138,6 @@ nguyên các nguyên tắc thiết kế của React.
 - Mutate & MutateAsync
   + Mutate: Không trả về kiểu Promise. Thích hợp cho việc xử lý trực tiếp các callback mà không cần chờ đợi kết quả.
   + MutateAsync: Trả về một Promise, cho phép sử dụng async/await để chờ kết quả. Thích hợp khi muốn sử dụng các cấu trúc điều khiển bất đồng bộ như async/await, giúp mã nguồn dễ đọc hơn.
+
+- Redux:
+  

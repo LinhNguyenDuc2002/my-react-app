@@ -9,7 +9,8 @@ export const LOCALE = {
 export const HEADER_PARAMS = {
     CONTENT_TYPE: 'Content-Type',
     ACCEPT_LANGUAGE: 'Accept-Language',
-    X_ORIGIN: 'X-Origin'
+    X_ORIGIN: 'X-Origin',
+    AUTHORIZATION: 'Authorization',
 
 }
 

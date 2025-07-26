@@ -9,3 +9,10 @@ export class ErrorResponse {
         this.data = data;
     }
 }
+
+export type DefaultResponse<T> = {
+    status: String;
+    code: Number;
+    data: T;
+    message: String;
+}

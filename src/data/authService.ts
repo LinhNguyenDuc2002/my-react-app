@@ -12,5 +12,5 @@ const instance: AxiosInstance = axios.create({
 });
 
 export const useAuthenAction = () => {
-    return useAction<Oauth2Form, Oauth2Response>('POST', instance);
+    return useAction<Oauth2Response, Oauth2Form>('POST', instance);
 }
