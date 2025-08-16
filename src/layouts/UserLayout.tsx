@@ -2,20 +2,29 @@ import { Layout } from "antd";
 import type React from "react";
 import AppBar from "../components/AppBar";
 import { Content } from "antd/lib/layout/layout";
-import Home from "../pages/home/Home";
+import Footer from "../components/Footer";
+import { createUseStyles } from "react-jss";
+import { Outlet } from "react-router-dom";
 
-export const UserLayout: React.FC = () => {
+const useStyles = createUseStyles({
+    content: {
+        margin: '50px'
+    }
+})
+
+const UserLayout: React.FC = () => {
+    const classes = useStyles();
+
     return(
-        <>
-            <Layout>
-                <AppBar></AppBar>
+        <Layout>
+            <AppBar></AppBar>
 
-                <Content>
-                    <Home></Home>
-                </Content>
+            <Content className={classes.content}>
+                <Outlet />
+            </Content>
 
-
-            </Layout>
-        </>
+            <Footer></Footer>
+        </Layout>
     );
 }
+export default UserLayout;

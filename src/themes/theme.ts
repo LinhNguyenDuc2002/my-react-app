@@ -5,25 +5,32 @@ export const LightTheme = {
         colorSuccess: '#52c41a',
         colorError: '#ff4d4f',
         borderRadius: 4,
+        fontFamilyCode: 'Roboto',
     },
 
     components: {
-        Header: {
-            headerBg: '#007bff'
+        Layout: {
+            headerBg: '#ffffff',
+            bodyBg: '#f5f5f5'
+        },
+
+        Form: {
+            itemMarginBottom: 32,
         },
 
         Button: {
-            colorPrimary: '#ff4d4f',
+            colorPrimary: '#03A9F4',
             algorithm: true,
         },
 
         Input: {
             colorPrimary: '#eb2f96',
+            hoverBorderColor: '#03A9F4',
+            activeBorderColor: '#03A9F4',
             algorithm: true,
         },
 
         Typography: {
-
         },
     },
 };
