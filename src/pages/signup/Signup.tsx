@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { FormProps } from 'antd';
-import { Button as AntButton, Card, Flex, Form, Image, Input, Typography } from 'antd';
+import { Button as AntButton, Card, Form, Image, Input } from 'antd';
 import SignupImage from '../../assets/draw2.webp';
 import { useTranslation } from 'react-i18next';
 import { createUseStyles } from 'react-jss';
@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
 import { UserOutlined, MailOutlined, PhoneOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from '../../components/Link';
 import { useNavigate } from 'react-router-dom';
-import ROUTE_CONSTANTS from '../../routes/routeConstant';
+import { ROUTE_CONSTANTS } from '../../routes/RouteConstant';
 import Title from '../../components/Title';
 
 const useStyles = createUseStyles({
@@ -29,7 +29,6 @@ const Button = styled(AntButton)`
     margin: 10px 0px;
 `;
 
-type LayoutType = Parameters<typeof Form>[0]['layout'];
 type FieldType = {
     username?: string;
     password?: string;
@@ -39,10 +38,7 @@ type FieldType = {
 const Signup: React.FC = () => {
     const classes = useStyles();
     const { t } = useTranslation();
-
     const navigate = useNavigate();
-    const [form] = Form.useForm();
-    const [formLayout, setFormLayout] = useState<LayoutType>('vertical');
 
     const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
         console.log('Success:', values);
@@ -50,10 +46,6 @@ const Signup: React.FC = () => {
 
     const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
         console.log('Failed:', errorInfo);
-    };
-
-    const onFormLayoutChange = ({ layout }: { layout: LayoutType }) => {
-        setFormLayout(layout);
     };
 
     return (
@@ -69,7 +61,6 @@ const Signup: React.FC = () => {
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
-                        layout={formLayout}
                         >
                         <Form.Item<FieldType>
                             name="username"

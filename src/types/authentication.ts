@@ -19,3 +19,22 @@ export type Oauth2Response = {
     token_type: string,
     expires_in: number
 }
+
+export interface UserInfo {
+    id: String,
+    username: String,
+    display_name: String,
+    dob: Date,
+    avatarUrl: String,
+    email: String,
+    phone: String,
+    sex: Boolean,
+    firstLogin: Boolean,
+}
+
+export interface UserState {
+    data: UserInfo | null;
+    loading: boolean;
+    error: string | null;
+    isAuthenticated: boolean;
+}

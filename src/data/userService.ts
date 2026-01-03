@@ -1,8 +1,8 @@
-import type { UserInfo } from "../redux/type";
+import type { UserInfo } from "../types/authentication";
 import type { DefaultResponse } from "../types/common";
-import defaultAxiosInstance from "./axios_instances/defaultAxiosInstance";
+import defaultInstance from "./axios_instances/defaultInstance";
 import { useAction, useFetch } from "./common";
 
 export const useGetLoggedInUser = () => {
-    return useFetch<DefaultResponse<UserInfo>>(defaultAxiosInstance, ["user_info"], '');
+    return useFetch<DefaultResponse<UserInfo>>(defaultInstance, ["user_info"], '');
 }

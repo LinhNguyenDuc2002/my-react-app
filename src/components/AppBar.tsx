@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Avatar, Dropdown, Image, Layout, Space, Typography } from 'antd';
 import type { MenuProps } from 'antd';
 import { UserOutlined, ShoppingCartOutlined, BellOutlined, MessageOutlined, OrderedListOutlined, QuestionCircleOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
@@ -8,9 +8,11 @@ import logoUrl from '../assets/react.svg';
 import { Link } from './Link';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import ROUTE_CONSTANTS from '../routes/routeConstant';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import type { RootState } from '../redux/store';
+import { ROUTE_CONSTANTS } from '../routes/RouteConstant';
+import { clearUser } from '../redux/actions/userSlice';
 
 const Header = styled(Layout.Header)`
     display: flex;
@@ -44,53 +46,56 @@ const { Title } = Typography;
 const AppBar: React.FC = () => {
     const classes = useStyles();
     const { t } = useTranslation();
-
-    const user = useSelector((state: RootState) => state.user.user);
     const navigate = useNavigate();
+    const { data, loading, error, isAuthenticated } = useSelector((state: RootState) => state.user);
+    const dispatch = useDispatch();
 
-    const items: MenuProps['items'] = useMemo(() =>
-        [
-            {
-                key: '1',
-                label: 'My Account',
-                disabled: true,
-            },
-            {
-                type: 'divider',
-            },
-            {
-                key: '2',
-                label: t('header_menu.my_account'),
-                icon: <UserOutlined />,
-                extra: '⌘P',
-            },
-            {
-                key: '3',
-                label: t('header_menu.view_orders'),
-                icon: <OrderedListOutlined />,
-                extra: '⌘B',
-            },
-            {
-                key: '4',
-                label: t('header_menu.settings'),
-                icon: <SettingOutlined />,
-                extra: '⌘B',
-            },
-            {
-                key: '5',
-                label: t('header_menu.help'),
-                icon: <QuestionCircleOutlined />,
-                extra: '⌘S',
-            },
-            {
-                key: '6',
-                label: t('header_menu.logout'),
-                icon: <LogoutOutlined />,
-                extra: '⌘S',
-            },
-        ],
-        []
-    );
+    const items: MenuProps['items'] = [
+        {
+            key: '1',
+            label: data?.display_name,
+            style: { fontWeight: 'bold' }
+        },
+        {
+            type: 'divider',
+        },
+        {
+            key: '2',
+            label: t('header_menu.my_account'),
+            icon: <UserOutlined />,
+            extra: '⌘P',
+        },
+        {
+            key: '3',
+            label: t('header_menu.view_orders'),
+            icon: <OrderedListOutlined />,
+            extra: '⌘B',
+        },
+        {
+            key: '4',
+            label: t('header_menu.settings'),
+            icon: <SettingOutlined />,
+            extra: '⌘B',
+        },
+        {
+            key: '5',
+            label: t('header_menu.help'),
+            icon: <QuestionCircleOutlined />,
+            extra: '⌘S',
+        },
+        {
+            key: '6',
+            label: t('header_menu.logout'),
+            icon: <LogoutOutlined />,
+            extra: '⌘S',
+            onClick: () => {
+                sessionStorage.removeItem('access_token');
+                sessionStorage.removeItem('refresh_token');
+                dispatch(clearUser());
+                navigate(ROUTE_CONSTANTS.login);
+            }
+        },
+    ];
 
     return (
         <Header>
@@ -119,6 +124,7 @@ const AppBar: React.FC = () => {
                             <BellOutlined />
                         </a>
                     </Dropdown>
+
                     <Dropdown menu={{ items }} className={classes.icon_container} >
                         <a onClick={(e) => e.preventDefault()}>
                             <MessageOutlined />
@@ -127,11 +133,15 @@ const AppBar: React.FC = () => {
                 </div>
             </div>
 
-            <Dropdown menu={{ items }}>
-                <a onClick={(e) => e.preventDefault()}>
-                    <Avatar icon={<UserOutlined />} />
-                </a>
-            </Dropdown>
+            { isAuthenticated ? 
+                <Dropdown menu={{ items }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                        <Avatar icon={<UserOutlined />} />
+                    </a>
+                </Dropdown>
+                :
+                <Link onClick={() => navigate(ROUTE_CONSTANTS.login)}>{t('button.login')}</Link>
+            }
         </Header>
     );
 };
