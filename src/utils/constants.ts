@@ -34,8 +34,12 @@ export const HTTP_STATUS_CODE = {
     INTERNAL_SERVER_ERROR: 500,
 }
 
+export const GRANT_TYPE = {
+    PASSWORD: 'password',
+    REFRESH_TOKEN: 'refresh_token',
+}
+
 export const ENV_BASE_API = import.meta.env.VITE_API_URL;
 export const ENV_BASE_IDENTIFY_PROVIDER_URL = import.meta.env.VITE_IDENTIFY_PROVIDER_URL;
 export const ENV_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 export const ENV_CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
-export const ENV_GRANT_TYPE = import.meta.env.VITE_GRANT_TYPE;

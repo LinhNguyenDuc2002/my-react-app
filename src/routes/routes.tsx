@@ -14,27 +14,15 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '',
-                element: (
-                    <ProtectedRoute redirectUri={ROUTE_CONSTANTS.home}>
-                        <Home />
-                    </ProtectedRoute>
-                )
+                element: <Home />
             },
             { 
                 path: ROUTE_CONSTANTS.login, 
-                element: (
-                    <ProtectedRoute>
-                        <Login />
-                    </ProtectedRoute>
-                )
+                element: <Login />
             },
             { 
                 path: ROUTE_CONSTANTS.signup, 
-                element: (
-                    <ProtectedRoute>
-                        <Signup />
-                    </ProtectedRoute>
-                )
+                element: <Signup />
             },
         ]
     },

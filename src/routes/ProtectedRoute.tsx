@@ -12,17 +12,13 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, redirectUri, allowedRoles }) => {
     const { isAuthenticated } = useSelector((state: RootState) => state.user);
-    console.log("ProtectedRoute - isAuthenticated:", isAuthenticated);
-    // if (!isAuthenticated) {
-    //     return <Navigate to={ROUTE_CONSTANTS.login} />;
-    // }
     
-
-    // if (allowedRoles && !allowedRoles.includes(role)) {
-    //     return <Navigate to="/" />; // Hoặc page lỗi, tùy ý
-    // }
-
-    return redirectUri ? <Navigate to={redirectUri} /> : children;
+    if (isAuthenticated) {
+        return children;
+    }
+    else {
+        return <Navigate to={ROUTE_CONSTANTS.login} />;
+    }
 };
 
 export default ProtectedRoute;

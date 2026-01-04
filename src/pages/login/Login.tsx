@@ -8,20 +8,24 @@ import { Link } from '../../components/Link';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_CONSTANTS } from '../../routes/RouteConstant';
 import type { Credentials, Oauth2Form, Oauth2Response } from '../../types/authentication';
-import { ENV_CLIENT_ID, ENV_CLIENT_SECRET, ENV_GRANT_TYPE } from '../../utils/constants';
+import { ENV_CLIENT_ID, ENV_CLIENT_SECRET, GRANT_TYPE } from '../../utils/constants';
 import { useAuthenAction } from '../../data/authService';
 import Title from '../../components/Title';
+import type { AppDispatch } from '../../redux/store';
+import { useDispatch } from 'react-redux';
+import { fetchUserInfo } from '../../redux/actions/userSlice';
 
 const Login: React.FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const dispatch: AppDispatch = useDispatch();
     const { mutateAsync: login, isPending } = useAuthenAction();
 
     const onFinish: FormProps<Credentials>['onFinish'] = async (values) => {
         const formData: Oauth2Form = {
             client_id: ENV_CLIENT_ID,
             client_secret: ENV_CLIENT_SECRET,
-            grant_type: ENV_GRANT_TYPE,
+            grant_type: GRANT_TYPE.PASSWORD,
             username: values.username,
             password: values.password,
         }
@@ -30,6 +34,7 @@ const Login: React.FC = () => {
         if(authResponse) {
             sessionStorage.setItem('access_token', authResponse.access_token);
             sessionStorage.setItem('refresh_token', authResponse.refresh_token);
+            dispatch(fetchUserInfo());
             navigate(ROUTE_CONSTANTS.home);
         }
     };
