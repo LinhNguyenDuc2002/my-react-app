@@ -2,14 +2,13 @@ import { Typography } from "antd"
 import React from "react"
 import { useState } from "react";
 
-type Data = {
+type ParagraphProps = {
     content: string;
     row?: number;
-    // children: React.ReactNode;
     [key: string]: any;
 }
 
-export const Paragraph: React.FC<Data> = ({ content, row = 2, ...props }) => {
+export const Paragraph: React.FC<ParagraphProps> = ({ content, row = 2, ...props }) => {
     const [expanded, setExpanded] = useState(false);
 
     return (

@@ -61,6 +61,7 @@ export default tseslint.config({
 - git branch -M main
 - git branch
 - git push -u origin main
+- git log --oneline --graph --decorate --all
 
 # ########## NOTE ##########
 - Create a React project with Vite using Typescript: npm create vite@latest my-react-app -- --template react-ts
@@ -133,3 +134,10 @@ nguyên các nguyên tắc thiết kế của React.
 
 - Install json-bigint-string: npm install json-bigint
   Xử lý các giá trị số lớn trong JSON, đặc biệt là khi các số này vượt quá giới hạn an toàn của JavaScript
+
+- Mutate & MutateAsync
+  + Mutate: Không trả về kiểu Promise. Thích hợp cho việc xử lý trực tiếp các callback mà không cần chờ đợi kết quả.
+  + MutateAsync: Trả về một Promise, cho phép sử dụng async/await để chờ kết quả. Thích hợp khi muốn sử dụng các cấu trúc điều khiển bất đồng bộ như async/await, giúp mã nguồn dễ đọc hơn.
+
+- Redux:
+  
